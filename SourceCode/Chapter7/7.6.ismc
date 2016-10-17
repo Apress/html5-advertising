@@ -1,0 +1,56 @@
+<SmoothStreamingMedia
+  MajorVersion="2"
+  MinorVersion="0"
+  Duration="5964800000">
+  <StreamIndex
+    Type="video"
+    Chunks="299"
+    QualityLevels="3"
+    MaxWidth="368"
+    MaxHeight="208"
+    DisplayWidth="368"
+    DisplayHeight="208"
+    Url="QualityLevels({bitrate})/Fragments(video={start time})">
+    <QualityLevel
+      Index="0"
+      Bitrate="477000"
+      FourCC="WVC1"
+      MaxWidth="368"
+      MaxHeight="208"
+      CodecPrivateData="250000010FC38E0B70678A0B7819E80450808E8E7474400000010E5A67F840" />
+    <QualityLevel
+      Index="1"
+      Bitrate="331000"
+      FourCC="WVC1"
+      MaxWidth="284"
+      MaxHeight="160"
+      CodecPrivateData="250000010FC38A08D04F8A08D813E80450808A1950CF400000010E5A67F840" />
+    <QualityLevel
+      Index="2"
+      Bitrate="230000"
+      FourCC="WVC1"
+      MaxWidth="224"
+      MaxHeight="128"
+      CodecPrivateData="250000010FC38606F03F8A06F80FE80450800704704DC00000010E5A67F840" />
+    <c n="0" d="19999968" />
+    <c n="298" d="4166661" />
+  </StreamIndex>
+  <StreamIndex
+    Type="audio"
+    Index="0"
+    FourCC="WMAP"
+    Chunks="299"
+    QualityLevels="1"
+    Url="QualityLevels({bitrate})/Fragments(audio={start time})">
+    <QualityLevel
+      Bitrate="64000"
+      SamplingRate="44100"
+      Channels="2"
+      BitsPerSample="16"
+      PacketSize="2973"
+      AudioTag="354"
+      CodecPrivateData="1000030000000000000000000000E00042C0" />
+    <c n="0" d="22755555" />
+    <c n="298" d="4992290" />
+  </StreamIndex>
+</SmoothStreamingMedia>

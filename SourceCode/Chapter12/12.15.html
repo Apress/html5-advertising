@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+while (navigator.onLine) {
+	var network = navigator.connection.type;
+	if (network === "ethernet" || network === "wifi" || network === "4g") {
+		//full ad experience
+	} else if (network === "3g" || network === "2g") {
+		//reduced ad experience
+	} else {
+		//no ad experince due to unkown network or none.
+	}
+}
+</script>
+</html>

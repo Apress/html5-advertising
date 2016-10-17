@@ -1,0 +1,13 @@
+@media only screen and (orientation: landscape) {
+    /* rules for device in landscape orientation */
+    body {
+    	background-color:black;
+    };
+}
+
+@media only screen and (orientation: portrait) {
+    /* rules for device in portrait orientation */
+    body {
+    	background-color:yellow;
+    };
+}

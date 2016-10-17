@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+/* ad */
+#ad .adContent {
+  -webkit-flow-into: adRegions;
+}
+
+.adRegions > div {
+  content: -webkit-from-flow('adRegions');
+  -webkit-flow-from: adRegions;
+  width: 30%;
+  height: 250px;
+  float: left;
+  margin: 10px;
+  padding: 30px;
+  border: 1px solid #000;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+</style>
+</head>
+
+<body>
+<div id="ad">
+  <div class="adContent">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec ipsum non massa vehicula feugiat. Etiam a tempor lectus. Etiam sollicitudin commodo risus, ac hendrerit felis auctor a. Maecenas sed sem sed libero faucibus elementum eu non sapien. Ut tellus nisl, imperdiet ut eleifend id, lacinia et enim. Suspendisse feugiat fringilla cursus. Phasellus nisl nisi, congue ac hendrerit eget, facilisis a nunc. Suspendisse potenti. Ut suscipit, lacus ac imperdiet lacinia, metus ipsum placerat libero, et dictum massa arcu vitae risus. Vestibulum varius hendrerit congue.
+  </div>
+  <div class="adRegions">
+    <div></div>
+    <div></div>
+  </div> 
+</div>
+</body>
+</html>

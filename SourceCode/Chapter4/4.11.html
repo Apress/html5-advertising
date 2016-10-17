@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+</head>
+<body>
+<canvas id="adCanvas" width='300' height='300'></canvas>
+</body>
+<script>
+if (Modernizr.canvas) {
+    console.log('canvas is supported—do canvas stuff');
+}else{
+    console.log('canvas is not supported use Flash or something similar as a failback');
+}
+</script>
+</html>

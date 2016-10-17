@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/> 
+  </head>
+    <body>
+    <audio controls>
+		<source src="sampleAudioFile.mp3" type="audio/mpeg" />
+		<source src=" sampleAudioFile.ogg" type="audio/ogg" />
+		<!-- Support Old FireFox -->
+		<object type="application/x-shockwave-flash" width="250" height="50">
+		<param name="movie" value="sampleAudioPlayer.swf" />
+		<param name="FlashVars" value="mp3=sampleAudioFile.mp3" />
+		<embed href="sampleAudioPlayer.swf" width="200" height="20" name="movie" type="application/x-shockwave-flash" flashvars="sampleAudioFile.mp3"></embed>
+		</object>
+</audio>
+</html>

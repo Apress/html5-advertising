@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name = "viewport" content = "width=device-width">
+</head>
+<body>
+	<button onclick=expandPandora()>Open Panel</button>
+	<button onclick=closePandora()>Close Panel</button>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	
+
+}, false)
+
+function expandPandora() {
+     try {
+          PandoraApp.setViewportHeight(300)
+     } catch (e) {
+          console.log (e + " No PandoraApp Reference")
+     };
+
+     initExpand();
+}
+
+function initExpand () {
+	console.log('initExpand')
+}
+
+function closePandora () {
+     try {
+          PandoraApp.setViewportHeight(50);
+     } catch (e) {
+          console.log(e + " No PandoraApp Reference")
+     }; 
+
+     closeExpand();
+} 
+
+function closeExpand () {
+	console.log('closeExpand')
+}
+</script>
+</html>

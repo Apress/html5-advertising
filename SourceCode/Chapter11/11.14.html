@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang=en>
+<head>
+</head>
+<style type="text/css">
+#ad300 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 250px;
+	border: 1px solid #000;
+	font-family: Arial;
+	font-size: 50px;
+	background-color: red;
+	color: black;
+	opacity: 1;
+	-webkit-transition-property: color;
+  	-webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.2, 0.9, 0.4);
+}
+</style>
+<body align=center>
+	<div id="ad300">300x250</div>
+</body>
+<script type="text/javascript">
+	var checker300 = window.setInterval(check, 100);
+
+	function check () {
+		if (ad300 === "play") {
+			animate300();
+		} else {
+			console.log('300 is stopped');
+		}
+	}
+
+	function animate300 () {
+		clearInterval(checker300);
+		document.getElementById('ad300').style.color = 'white';
+	}
+</script>
+</html>

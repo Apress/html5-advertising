@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+var theBattery = navigator.battery || navigator.webkitBattery || navigator.mozBattery;
+
+theBattery.addEventListener("chargingchange", function(e) {
+  console.warn("Charging change: ", theBattery.charging);
+}, false);
+theBattery.addEventListener("chargingtimechange", function(e) {
+  console.warn("Charge time change: ", theBattery.chargingTime);
+}, false);
+theBattery.addEventListener("dischargingtimechange", function(e) {
+  console.warn("Discharging time change: ", theBattery.dischargingTime);
+}, false);
+theBattery.addEventListener("levelchange", function(e) {
+  console.warn("Level change: ", theBattery.level);
+}, false);
+
+</script>
+</html>

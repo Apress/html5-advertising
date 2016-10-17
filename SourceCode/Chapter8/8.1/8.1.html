@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+	var images = new Array();
+	var numImages = '3';
+	var count;
+	function preloading () {
+		for (i = 0; i < preloading.arguments.length; i++){
+			images[i] = new Image();
+            images[i].src = preloading.arguments[i];
+            count = i+1;
+            
+            if(count.toString() === numImages) {
+                //initialize ad
+                console.log('adInit');
+            }
+        }
+}
+preloading(
+    "image1.gif",
+    "image2.gif",
+    "image3.gif"
+);
+</script>
+</head>
+<body>
+</body>
+</html>

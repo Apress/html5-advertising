@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<meta charset=utf-8>
+<body>
+<header>
+      <h1>geolocation</h1>
+      <div id="coords"></div>
+</header>
+<script>
+function success(position) {
+  var lat = position.coords.latitude;
+  var long = position.coords.longitude;
+  document.getElementById('coords').innerHTML = "<p><strong>lat: </strong>" + lat + " <br><strong>long: </strong>" + long + "";
+}
+
+function error(error) {
+    switch (error.code) {
+    case error.PERMISSION_DENIED:
+        alert("user did not share geolocation data");
+        break;
+    case error.POSITION_UNAVAILABLE:
+        alert("could not detect current position");
+        break;
+    case error.TIMEOUT:
+        alert("retrieving position timed out");
+        break;
+    default:
+        alert("unknown error");
+        break;
+    }
+}
+
+function adInit(event) {  
+  console.log(event.type)
+  if (navigator.geolocation) {
+	  navigator.geolocation.getCurrentPosition(success, error);
+	} else {
+	  error('not supported');
+	}
+}
+
+window.addEventListener('DOMContentLoaded', adInit, false);
+</script>
+</body>
+</html>

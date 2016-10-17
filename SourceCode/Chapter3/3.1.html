@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css" media="screen">
+#clickBtn {background-color:#000; width:100px; height:20px; color:#FFF; cursor:pointer;}
+</style>
+</head>
+<body>
+<div align="center" id="clickBtn" data-link=$MACRO$ onClick=window.open(macroValue)>Open Macro</div>
+</body>
+<script type="text/javascript">
+var macroValue = document.getElementById('clickBtn').getAttribute('data-link') //returns value to be replaced by ad server
+</script>
+</html>

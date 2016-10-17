@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+</body>
+<script type="text/javascript">
+var publisherSize; //Get this value from the publisher's page at ad serve time.
+var img = new Image();
+
+window.addEventListener('load', function () {
+	//fire off uber impression
+	img.src = 'http://imptracker.adserver.com';
+
+	//Pass publisher's layout to the checkSize function
+	checkSize(publisherSize);
+}, false);
+
+function checkSize (creativeSize) {
+	//Check the size to fire off supplementary impression
+	switch (creativeSize) {
+	     case "300x50" :
+	          img.src='http://sizetracker.adserver.com/300x50';
+	          break;
+	     case "300x250" :
+	          img.src='http://sizetracker.adserver.com/300x250';
+	          break;
+	     case "728x90" :
+	          img.src='http://sizetracker.adserver.com/728x90';
+	          break;
+	}
+}
+
+</script>
+</html>

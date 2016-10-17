@@ -1,0 +1,4 @@
+ADMARVEL-CACHE
+assets/style.css	http://cdn.domain.com/assets/style.css
+assets/script.js	http://cdn.domain.com/assets/script.js
+assets/logo.png	http://cdn.domain.com/assets/logo.png

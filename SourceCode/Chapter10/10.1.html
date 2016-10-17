@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+function networkIndicator() {
+document.getElementById('status').textContent = navigator.onLine ? 'online' : 'offline';
+}
+</script>
+</head>
+<body onload="networkIndicator()" ononline=" networkIndicator()" onoffline=" networkIndicator()">
+<p>The network is: <span id="status"></span></p>
+</body>
+</html>

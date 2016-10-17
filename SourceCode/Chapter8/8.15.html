@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+</body>
+<script>
+window.addEventListener("orientationchange", function() {
+   	if (window.orientation === 0 || window.orientation === 180) {
+       //portrait
+       showPortrait();
+   	} else {
+   		//landscape
+		showLandscape();
+	}
+}, false);
+
+function showPortrait () {
+	document.body.style.backgroundColor = 'yellow';
+}
+function showLandscape () {
+	document.body.style.backgroundColor = 'black';
+}
+</script>
+
+
+</html>

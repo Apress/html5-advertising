@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+* {
+  margin:0px;
+  padding:0px;
+}
+#ad {
+  width:300px;
+  height:250px;
+  border:1px solid #000;
+  overflow: hidden;
+}
+#logo {
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 300px;
+  height: 250px;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+  font-size: 40px;
+  text-align: center;
+  color: #fff;
+  z-index: 3;
+}
+#cta {
+  position: absolute;
+  top: 220px;
+  left: 1px;
+  width: 300px;
+  height: 250px;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+  font-size: larger;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+#dropper {
+  position: relative;
+  top: 25px;
+  left: 80px;
+  z-index: 101;
+}
+#dropArea {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 280px;
+  height: 150px;
+  background: #f2f5f6; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(37%,#e3eaed), color-stop(100%,#c8d7dc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+
+  border: 1px dashed;
+  border-radius:10px;
+
+  z-index: 81;
+}
+#background {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 300px;
+  height: 250px;
+  background: #c0c5d6; /* Old browsers */
+  background: -moz-linear-gradient(top,  #c0c5d6 0%, #3f4c6b 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0c5d6), color-stop(100%,#3f4c6b)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #c0c5d6 0%,#3f4c6b 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #c0c5d6 0%,#3f4c6b 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #c0c5d6 0%,#3f4c6b 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #c0c5d6 0%,#3f4c6b 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0c5d6', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
+
+  z-index: 0;
+}
+
+
+/******Mock Publisher Content********/
+#publisherContent {
+  position: absolute;
+  top: 300px;
+  left: 100px;
+}
+
+#pubProduct {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width:100px;
+  height:100px;
+  background: url(hammer.png) no-repeat;
+
+  z-index: 90;
+}
+
+</style>
+<script type="text/javascript">
+//fires when product is over the drop area
+function allowDrop(event) {
+  //cancel default for drop event to fire
+  event.preventDefault();
+  console.log("YOU'RE OVER THE DROP AREA!!!")
+}
+
+function dropArea(event){  
+  var data = event.dataTransfer.getData("Text");
+  var dropArea = document.getElementById('dropper');
+  var element = document.getElementById(data);
+  dropArea.appendChild(element);
+  
+  console.log(element)
+}
+
+//initial drag when product is selected
+function drag(event) {
+  var dropImg = document.createElement("img");
+  dropImg.src = "add.png";
+  dropImg.width = "48px";
+  dropImg.height = "48px";
+  dropImg.style.opacity = "0.5";
+
+  event.dataTransfer.effectAllowed='all';
+  event.dataTransfer.setData("Text", event.target.getAttribute('id'));
+  event.dataTransfer.setDragImage(dropImg, 25, 25);
+}
+
+function adInit(event) {  
+  console.log(event.type)
+}
+
+window.addEventListener('DOMContentLoaded', adInit, false);
+</script>
+</head>
+
+<body>
+<div id="publisherContent">
+  <div id="pubProduct" draggable="true" ondragstart="drag(event)"></div>
+</div>
+
+<div id="ad">
+  <div id="logo">Shopping Cart</div>
+  <div id="cta"> Drag Products To Drop Area! </div>
+  <div id="dropArea" ondrop=dropArea(event) ondragover=allowDrop(event)>
+    <div id="dropper"></div>
+  </div>
+  <div id="background"></div>
+</div>
+</body>
+</html>

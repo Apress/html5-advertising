@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+function fireImpression () {
+	var beacon = new Image ();
+	beacon.src = "http://tracking.somedomain.com?r=" + cacheBust();
+}
+
+function cacheBust () {
+     var num = Math.random();
+     return num;
+}
+</script>
+</head>
+<body onload=fireImpression()>
+</body>
+</html>

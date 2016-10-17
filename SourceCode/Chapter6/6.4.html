@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset=utf-8>
+    <body>
+    </body>
+        <script>
+            var isHidden,
+            	state,
+            	visibilityChangeEvent;
+            
+            function adInit(event) {
+                console.log(event.type)
+
+	            if (typeof document.hidden !== "undefined") {
+	                isHidden = "hidden";
+	                visibilityChangeEvent = "visibilitychange";
+	                state = "visibilityState";
+	            } else if (typeof document.mozHidden !== "undefined") {
+	                isHidden = "mozHidden";
+	                visibilityChangeEvent = "mozvisibilitychange";
+	                state = "mozVisibilityState";
+	            } else if (typeof document.msHidden !== "undefined") {
+	                isHidden = "msHidden";
+	                visibilityChangeEvent = "msvisibilitychange";
+	                state = "msVisibilityState";
+	            } else if (typeof document.webkitHidden !== "undefined") {
+	                isHidden = "webkitHidden";
+	                visibilityChangeEvent = "webkitvisibilitychange";
+	                state = "webkitVisibilityState";
+	            }                
+
+            	document.addEventListener(visibilityChangeEvent, function (event) {
+                	if (document[state] == "hidden") {
+				    	pauseAd();
+					} else {
+				    	startAd();
+					}
+
+            	}, false);
+            }
+
+            function pauseAd () {
+            	console.log("pauseAd");
+            	//code to pause ad
+            }
+
+            function startAd () {
+            	console.log("startAd");
+            	//code to start ad
+            }
+
+            window.addEventListener('DOMContentLoaded', adInit, false);
+        </script>
+    </html>

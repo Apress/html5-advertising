@@ -1,0 +1,32 @@
+<MPD type="static" xmlns="urn:mpeg:DASH:schema:MPD:2011" profiles="urn:mpeg:dash:profile:full:2011" minBufferTime="PT1.2S" mediaPresentationDuration="PT0H2M59.23S">
+  <Title>MPEG-DASH Example</Title>
+ </ProgramInformation>
+ <Period start="PT0S" duration="PT0H2M59.23S">
+  <AdaptationSet>
+   <ContentComponent id="1" contentType="video"/>
+   <SegmentTemplate initialization="vid.mp4"/>
+   <Representation id="1" mimeType="video/mp4" codecs="avc1.64001f" width="1280" height="720" startWithSAP="1" bandwidth="534520">
+    <SegmentTemplate timescale="1000" duration="9750" media="vid.mp4." startNumber="1"/>
+   </Representation>
+   <Representation id="2" mimeType="video/mp4" codecs="avc1.64001f" width="1280" height="720" startWithSAP="1" bandwidth="812797">
+    <SegmentTemplate timescale="1000" duration="9750" media="vid.mp4" startNumber="1"/>
+   </Representation>
+   <Representation id="3" mimeType="video/mp4" codecs="avc1.64001f" width="1280" height="720" startWithSAP="1" bandwidth="1607936">
+    <SegmentTemplate timescale="1000" duration="9750" media="vid.mp4" startNumber="1"/>
+   </Representation>
+   <Representation id="4" mimeType="video/mp4" codecs="avc1.64001f" width="1280" height="720" startWithSAP="1" bandwidth="3088816">
+    <SegmentTemplate timescale="1000" duration="9750" media="vid.mp4" startNumber="1"/>
+   </Representation>
+   <Representation id="5" mimeType="video/mp4" codecs="avc1.64001f" width="1280" height="720" startWithSAP="1" bandwidth="3861547">
+    <SegmentTemplate timescale="1000" duration="9750" media="vid.mp4" startNumber="1"/>
+   </Representation>
+  </AdaptationSet>
+  <AdaptationSet>
+   <ContentComponent id="1" contentType="audio" lang="en"/>
+   <SegmentTemplate initialization="vid.mp4"/>
+   <Representation id="1" mimeType="audio/mp4" codecs="mp4a.40.02" sampleRate="44100" numChannels="2" lang="en" startWithSAP="1" bandwidth="257141">
+    <SegmentTemplate timescale="1000" duration="9980" media="audio.m4s" startNumber="1"/>
+   </Representation>
+  </AdaptationSet>
+ </Period>
+</MPD>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        font-family: Verdana;
+    }
+    #ad {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      width: 300px;
+      height: 250px;
+      border: 1px solid black;
+      text-align: center;
+    }
+    #name {
+      font-size: 60px;
+      z-index: 20;
+      color: white;
+    }
+    #usersName {
+      font-size: 50px;
+      z-index: 20;
+      font-weight: bold;
+    }
+    #cta {
+      z-index: 10;
+      -moz-box-shadow: 0px 0px 0px 0px #caefab;
+      -webkit-box-shadow: 0px 0px 0px 0px #caefab;
+      box-shadow: 0px 0px 0px 0px #caefab;
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+      background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+      background-color:#77d42a;
+      -moz-border-radius:42px;
+      -webkit-border-radius:42px;
+      border-radius:42px;
+      border:3px solid #268a16;
+      display:inline-block;
+      color:#306108;
+      font-family:arial;
+      font-size:28px;
+      font-weight:bold;
+      padding:20px;
+      text-decoration:none;
+      text-shadow:1px 1px 0px #aade7c;
+    }
+    #cta:hover {
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+      background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+      background-color:#5cb811;
+    }
+    #cta:active {
+      position:relative;
+      top:1px;
+    }
+    #background {
+      z-index: 0;
+      width: 300px;
+      height: 250px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background: rgb(201,222,150); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(201,222,150,1) 0%, rgba(138,182,107,1) 44%, rgba(57,130,53,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(201,222,150,1)), color-stop(44%,rgba(138,182,107,1)), color-stop(100%,rgba(57,130,53,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* W3C */
+    }
+</style>
+<body>
+<div id='ad'>
+  <div id='name'>Hello!<span id='usersName'></span></div>
+  <a id='cta'>Click Here</a>
+  <div id='background'></div>
+</div>
+</body>
+</html>
+<script>
+
+function adInit () {
+  if(localStorage) {
+    if (localStorage.getItem('userName') === '' || localStorage.getItem('userName') === null) {
+      var uname = prompt('Enter Your Name');
+      localStorage.setItem('userName', uname);
+      document.getElementById('usersName').innerHTML = uname;
+    } else {
+      document.getElementById('usersName').innerHTML = '<br>' + localStorage.getItem('userName');
+    }
+  } else {
+    alert('Browser not supported!');
+  }
+}
+
+window.addEventListener('load', adInit, false);
+</script>

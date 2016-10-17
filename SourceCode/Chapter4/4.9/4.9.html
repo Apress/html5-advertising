@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<canvas id="adCanvas" width='300' height='300'></canvas>
+</body>
+<script type="text/javascript">
+//get a reference to the canvas
+var canvas = document.getElementById('adCanvas');
+var context = canvas.getContext('2d');
+var img=new Image();
+img.src="test.jpg";
+img.onload = function(){
+     context.drawImage (img,0,0);
+};
+//Mouse Events
+canvas.addEventListener('click', function(evt){
+     console.log('Click: ' + evt);
+     // no argument defaults to image/png; image/jpeg, etc also work on some. image/png is the only one that must be supported per spec.
+     try {
+          window.location = canvas.toDataURL("image/png");
+     } catch (error) {
+          console.log(error);
+     }
+});
+</script>
+</html>

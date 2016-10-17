@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<canvas id="adCanvas"></canvas>
+</body>
+<script>
+//get a reference to the canvas
+var canvas = document.getElementById('adCanvas');
+var context = canvas.getContext('2d');
+var adWidth = 300;
+var adHeight = 250;
+
+canvas.width = adWidth;
+canvas.height = adHeight;
+context.moveTo(0,0);
+context.lineTo(adWidth,0);
+context.moveTo(adWidth,0);
+context.lineTo(adWidth,adHeight);
+context.moveTo(adWidth,adHeight);
+context.lineTo(0,adHeight);
+context.moveTo(0,adHeight);
+context.lineTo(0,0);
+context.stroke();
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang=en>
+<head>
+</head>
+<body>
+<p hidden>MACRO</p>
+</body>
+<script>
+var output = document.getElementsByTagName('p')[0];
+
+function onAdServerComplete (value) {
+	// macro value
+	var welcome = "Hello " + value;
+	output.innerHTML = welcome;
+	output.removeAttribute('hidden');
+}
+
+//Example Callback with value from AdServer
+onAdServerComplete("John");
+</script>
+</html>

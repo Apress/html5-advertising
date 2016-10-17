@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html manifest='10.5.appcache'>
+<head>
+<script>
+var cache = window.applicationCache;
+
+cache.addEventListener('cached', handleCacheEvent, false);
+cache.addEventListener('checking', handleCacheEvent, false);
+cache.addEventListener('downloading', handleCacheEvent, false);
+cache.addEventListener('error', handleCacheError, false);//Good to use if the manifest is moved or if the user is offline
+cache.addEventListener('noupdate', handleCacheEvent, false);
+cache.addEventListener('obsolete', handleCacheEvent, false);
+cache.addEventListener('progress', handleCacheEvent, false);
+
+// When a new manifest is downloaded, swap the new cache assets and reload.
+cache.addEventListener('updateready', reloadAssets, false); 
+
+function reloadAssets (){
+     if (cache.status == cache.UPDATEREADY) {
+          cache.swapCache();
+          if (confirm('A new version is available')) {
+               window.location.reload();
+          }
+     }
+};
+
+function handleCacheEvent (event) {
+	console.log(event)
+}
+function handleCacheError (event) {
+	console.log(event)
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>

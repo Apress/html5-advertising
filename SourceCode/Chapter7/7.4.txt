@@ -1,0 +1,1 @@
+mediafilesegmenter Your/File/Location.mov -t 17 -f Your/File/Destination.m3u8

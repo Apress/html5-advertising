@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+	.ad {
+		height: 250px;
+		width: 300px;
+		background-color: #000;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	</style>
+</head>
+<body>
+	<div class="ad"></div>
+</body>
+<script>
+var ad = document.querySelector('.ad');
+window.addEventListener("deviceorientation", function(event) {
+    // process
+    var a = event.alpha;
+    var b = event.beta;
+    var g = event.gamma;
+
+    console.log('Alpha : ' + a + ' Beta : ' + b + ' Gamma : ' + g);
+    ad.style.webkitTransform = 'translate3d(' + Math.round(a) + 'px, ' + Math.round(b) + 'px, ' + Math.round(g) + 'px)';
+}, true);
+</script>
+</html>

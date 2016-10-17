@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang=en>
+<head>
+	<style type='text/css'>
+#ad728 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 728px;
+	height: 90px;
+	border: 1px solid #000;
+	font-family: Arial;
+	font-size: 80px;
+	background-color: red;
+	color: rgb(0, 0, 0);
+	opacity: 1;
+	-webkit-transition-property: color;
+  	-webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.2, 0.9, 0.4);
+}
+#ad728:hover {
+	color: rgb(255, 255, 255);
+}
+</style>
+</head>
+<body align=center>
+	<div id='ad728'>728x90</div>
+</body>
+<script type='text/javascript'>
+var ad728 = document.getElementById('ad728'),
+	ad728value;
+
+function adInit () {
+	console.log('adInit');
+	ad728.addEventListener('webkitTransitionEnd', nudge300, false);
+}
+
+function nudge300 (event) {
+	console.log(event);
+	ad728value = window.getComputedStyle(ad728,null).getPropertyValue('color');
+
+	if (ad728value === 'rgb(255, 255, 255)') {		
+		if(typeof window.postMessage === 'undefined'){
+			console.error('Your browser does not support the communication API');
+			//fail over to our other method
+		} else {
+			//Same Domain
+			console.log('Message: ' + window.postMessage)
+			window.postMessage('play300', 'http://johnpercival.org');//Insert your domain here
+			
+			//Cross Domain
+			//document.getElementsByTagName('iframe')[0].contentWindow.postMessage('play300', 'http://johnpercival.org');
+		}
+	} else {
+		//some other color
+		console.log(ad728value);
+	}
+};
+
+window.addEventListener('load', adInit, false);
+</script>
+</html>

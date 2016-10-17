@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+	<div id='icon'></div>
+</body>
+<script>
+function adChecker () {
+     if (document.querySelector("#icon")) {
+          initAd();
+     } else {
+          setTimeout(adChecker,100);
+     }
+}
+
+function initAd () {
+     //Ad content starts here
+     console.log('initAd')
+}
+
+adChecker();
+</script>
+
+</html>

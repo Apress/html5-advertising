@@ -1,0 +1,11 @@
+"people": [
+	{
+		"name": "John",
+		"age":"28",
+		"title":"Developer"
+	},{
+		"name": "Alison",
+		"age":"26",
+		"title":"Teacher"
+	}
+]

@@ -1,0 +1,35 @@
+<head>
+<script type="text/javascript">
+//Grow this list for as long as you wish…
+var keyWords = ['Doh','jeez','dagnabit','boo','agh','Golly'];
+
+function replaceChars(chr,cnt) {
+  var s = '';
+  for (var i=0; i<cnt; i++) {
+    s += chr;
+    console.log(s);
+  }
+  return s;
+}
+
+function checkWords() {
+  var inputText = document.getElementById('textArea').value;
+  var outputText = document.getElementById('conditionedText');
+    
+  for (var i=0; i < keyWords.length; i++) {
+    var rg = new RegExp(keyWords[i]+' ',"ig");
+    inputText = inputText.replace(rg,replaceChars('*',keyWords[i].length)+' ');
+  }
+
+  outputText.textContent = inputText;
+}
+</script>
+</head>
+<body>
+<textarea id="textArea" rows="5" cols="13">
+This chapter is dagnabit amazing!
+</textarea>
+<button onclick="checkWords()">Submit!</button>
+<div id="conditionedText"></div>
+</body>
+</html>

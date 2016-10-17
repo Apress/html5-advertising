@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<head>
+<script>
+if (!!window.Worker) {
+	var worker = new Worker('worker.js');
+
+	// Receive the message from the worker thread
+	worker.onmessage = function (event) {
+		var workerMsg = event.data;
+  		document.write(workerMsg);
+	};
+} else {
+	console.log('No Worker Support')
+}
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<style type="text/css">
+* {
+  margin: 0px;
+  padding: 0px;
+}
+#drop_zone {
+    width:300px;
+    height: 250px;
+    background-color:#999;
+    border: 1px dashed #000;
+}
+p {
+    width: 300px;
+}
+</style>
+<head>
+    <meta charset=utf-8>
+    <body>
+        <div class="percent">0%</div>
+        <input type=file>
+        <div id="drop_zone">Drop Zone</div>
+        <p>Select an image from your machine or drop onto the drop zone to read the contents of the file without using a server</p>
+        <script>
+            function adInit(event) {
+                event.preventDefault();
+                var upload = document.getElementsByTagName('input')[0];
+                var progress = document.querySelector('.percent');
+                var dropZone = document.getElementById('drop_zone');
+                dropZone.addEventListener('drop', handleFileSelect, false);
+  
+                // Check for the various File API support.
+                if (window.File && window.FileReader && window.FileList && window.Blob) {
+                    var reader = new FileReader();
+                    console.log('Sweet! All File APIs supported');
+
+                    upload.onchange = function (event) {
+                        var file = upload.files[0];
+                        var img = new Image();
+                        reader.onload = function (event) {
+                            console.log(event.type);
+                        };
+                        reader.onprogress = function (event) {
+                            console.log(event.type);
+                            var percentLoaded = Math.round((event.loaded / event.total) * 100);
+                            progress.textContent = percentLoaded + '%';
+                            console.log(percentLoaded)
+                        };
+                        reader.onloadend = function (event) {
+                            if (!file.type.match('image.*')) {
+                                alert("Not an image!!");
+                            } else {
+                                img.src = event.target.result;  
+                                if (img.width >= 300) {
+                                    img.width = 300;
+                                }                              
+                            }
+                            console.log(event.type);
+                            dropZone.innerHTML = '';
+                            dropZone.appendChild(img);
+                        };
+                        reader.onerror = function (event) {
+                            console.log(event.type);
+                        };
+
+                        reader.readAsDataURL(file);
+                        console.log(reader);
+                        return false;
+                    };
+
+                    function handleFileSelect(event) {
+                        event.stopPropagation();
+                        event.preventDefault();
+                        //event.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+                        var files = event.dataTransfer.files; // FileList object.
+                        var file = files[0];
+
+                        reader.onloadend = function (event) {
+                            console.log(event.target);
+                            dropZone.style.width = "300px";
+                            dropZone.style.height = "300px";                            
+                            dropZone.style.background = 'url(' + event.target.result + ') no-repeat center';
+                        };
+                        
+                        reader.readAsDataURL(file);
+                        return false;
+
+                        console.log(file)                        
+                    }
+                } else {
+                    alert('The File APIs are not fully supported in this browser.');
+                }
+            }
+
+            window.addEventListener('DOMContentLoaded', adInit, false);
+        </script>
+    </body>
+    </html>

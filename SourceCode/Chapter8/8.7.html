@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+	<div id='icon' style='background-color:black; width:50px; height:50px;'></div>
+</body>
+<script>
+var someElement = document.querySelector('#icon');
+someElement.addEventListener('touchstart', activityHandler, false);
+
+function activityHandler () {
+     var img = new Image ();
+     img.src = 'http://www.tracker.com/ping';
+}
+</script>
+
+</html>

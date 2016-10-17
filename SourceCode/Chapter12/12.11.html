@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+</body>
+<script>
+window.URL = window.webkitURL || window.URL;
+window.WebSocket = window.WebSocket || window.MozWebSocket;
+
+var ws = new WebSocket('ws://johnpercival.org/socket', 80);
+
+ws.binaryType = 'blob'; // or 'arraybuffer'
+ws.onopen = function(e) {
+	console.log('Connection OPEN');
+};
+ws.onmessage = function(e) {
+	console.log('MESSAGE');
+};
+
+//Send data to the websocket server
+var data = “Sample Data”;
+ws.send(data);
+</script>
+</html>

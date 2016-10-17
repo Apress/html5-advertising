@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EaselJS</title>
+<script src="easeljs-0.4.2.min.js"></script>
+<script src="BoxBlurFilter.js"></script>
+<style>
+* {background-color: #000;}
+</style>
+</head>
+<body onLoad="init()">
+<canvas id="canvas" width="1024" height="768"></canvas>
+</body>
+<script>
+var stage,
+      canvas = document.getElementById("canvas"),
+      context = canvas.getContext("2D"),
+      logoImage = new Image(),
+      logo,
+      fps = 30,
+      speed = 0.2;
+
+function init() {
+      stage = new Stage(canvas);
+      //Keep a local image or you'll get the following error:
+      //Unable to get image data from canvas because the canvas has been tainted by cross-origin data.
+      logoImage.src = 'logo.jpg';
+      logoImage.onload = function () {
+            logo = new Bitmap(logoImage);
+            logo.cache(0, 0, logoImage.width, logoImage.height);
+            logo.regX = logo.image.width * 0.5;
+            logo.regY = logo.image.height * 0.5;
+            stage.addChild(logo);
+           Ticker.setFPS(fps);
+           Ticker.addListener(window);
+      }
+}
+function tick() {
+      var splitX = (stage.mouseX - logo.x) * speed;
+      var splitY = (stage.mouseY - logo.y) * speed;
+      logo.x += splitX;
+      logo.y += splitY;
+      logo.updateCache();
+      logo.filters = [new BoxBlurFilter(5000, 5000, 2)];
+      stage.update();
+}
+</script>
+</html>

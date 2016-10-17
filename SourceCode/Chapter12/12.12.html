@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+	<video autoplay></video>
+</body>
+<script>
+var intentParams = {
+  "action": "http://webintents.org/share",
+  "type": "image/*",
+  "data": location.href
+};
+
+var intent = new Intent(intentParams);
+window.navigator.startActivity(intent);
+</script>
+
+</html>
+ 

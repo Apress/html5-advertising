@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name = "viewport" content = "width=device-width">
+</head>
+<body>
+	<div id='cta' hidden data='http://johnpercival.org'>Click Here</button></div>
+	<section id='banner'><button onclick=expandMRAID()>Open Panel</button></section>
+	<section id='panel'><button onclick=closeMRAID()>Close Panel</button></section>
+</body>
+<script>
+function checkMRAID (){
+       if (mraid.getState() != 'ready') {
+             console.log("MRAID Ad: adding event listener for ready");
+             /* mraid still loading, registering for ready event */
+             mraid.addEventListener('ready', init);
+       } else if (mraid.getState() === 'ready') {
+             console.log("MRAID Ad: already ready, calling init");
+             init();
+       } else {
+             console.log("MRAID Ad: I think its ready, calling init");
+             init();
+      }
+}
+
+function init () {
+       mraid.removeEventListener('ready', init);
+
+       console.log("Mraid Version = " + mraid.getVersion());
+       console.log("Mraid Placement Type = " + getPlacementType());
+
+       mraid.setExpandProperties({
+            width : 320,
+            height : 480,
+            useCustomClose : true
+       });
+		
+       mraid.addEventListener('error', handleErrorEvent);
+                mraid.addEventListener('stateChange', handleStateChangeEvent);
+	
+       document.getElementById('cta').removeAttribute('hidden');
+       document.getElementById('cta').addEventListener('click', function() {
+             var url = document.getElementById('cta').getAttribute('data');
+             openBrowser(url);
+       });
+}
+
+function expandMRAID () {
+       try {
+           mraid.expand();
+       } catch (e) {
+	    console.log(e + " No MRAID Reference")
+       };
+}
+
+function closeMRAID () {
+       try {
+           mraid.close();
+    	} catch (e) {
+           console.log(e + " No MRAID Reference")
+       };
+}
+
+function handleStateChangeEvent(state){
+       switch (state) {
+             case "default":
+                    document.getElementById('banner').style.display = 'block';
+                    document.getElementById('expandable').style.display = 'none';
+                    break;
+             case "expanded":
+                    document.getElementById('banner').style.display = 'none';
+                    document.getElementById('expandable').style.display = 'block';
+                    break;
+       }
+       console.log("State - " + state + " at handleStateChangeEvent");
+}
+
+function openBrowser(href) {
+       try {
+            mraid.open(href);
+       } catch (e) {
+            console.error(e);
+       } finally {
+            window.setTimeout('location.href="' + href + '"', 150);
+       }
+}
+
+function handleErrorEvent (message, action){
+    var msg = "MRAID ERROR ";
+    if (action != null) {
+       msg += "caused by action '" + action + "', ";
+    }
+    msg += "Message: " + message;
+    console.error(msg);
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+       try {
+             var head = document.getElementsByTagName('head')[0];
+             var js = document.createElement('Script');
+             js.setAttribute('type', 'text/javascript');
+             js.setAttribute('src', 'mraid.js');
+             head.appendChild(js);
+       } catch (e) {
+             console.log("Error injecting mraid.js");
+       }
+       console.log('DOM Loaded');
+
+       checkMRAID();
+});
+</script>
+</html>

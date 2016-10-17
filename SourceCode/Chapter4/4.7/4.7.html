@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<canvas id="adCanvas" width='300' height='300'></canvas>
+</body>
+<script type="text/javascript">
+//get a reference to the canvas
+var canvas = document.getElementById('adCanvas');
+var context = canvas.getContext('2d');
+//draw image
+var img=new Image();
+img.src="test.jpg";
+img.onload = function(){
+     context.drawImage (img,0,0);
+};
+</script>
+
+</html>

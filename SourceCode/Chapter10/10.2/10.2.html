@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+function testConnection (fileToPing) {
+  var xhr;
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    //For IE6, IE5
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xhr.onreadystatechange=function() {
+    if (xhr.readyState==4 && xhr.status==200) {
+      console.log("Online")
+    } else {
+      console.log("Offline")
+    }
+  }
+  
+  xhr.open("GET",fileToPing,true);
+  xhr.send();
+}
+
+testConnection("http://www.yourdomain.org/1x1.gif");
+</script>
+
+</head>
+<body>
+</body>
+</html>

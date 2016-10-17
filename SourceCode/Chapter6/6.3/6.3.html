@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+    }
+    canvas {
+        position: absolute;
+        top: 20px;
+        left: 0px;
+        width: 300px;
+        height: 250px;
+        border: 1px solid #000;
+    }
+    .percent {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+    }
+    button {
+        position: absolute;
+        top: 300px;
+        width: 200px;
+        height: 50px;
+        visibility: hidden;
+    }
+</style>
+<head>
+    <meta charset=utf-8>
+    
+    <body>
+        <div class="percent">Loader: 0%</div>
+        <canvas width=300 height=250>
+            <p>No Canvas Support</p>
+        </canvas>
+        <button></button>
+        <script>
+            function adInit(event) {
+                event.preventDefault();
+
+                var canvas = document.getElementsByTagName('canvas')[0],
+                    context = canvas.getContext('2d'),
+                    progress = document.querySelector('.percent'),
+                    img = document.createElement("img"),
+                    saveBtn = document.querySelector("button"),
+                    mouseIsDown = false,
+                    hasText = true,
+                    clearCanvas = function () {
+                        if (hasText) {
+                            context.clearRect(0, 0, canvas.width, canvas.height);
+                            hasText = false;
+                        }
+                    };
+
+                // GENERIC CTA
+                context.fillText("Drop an image onto the ad!", 50, 50);
+
+                // Image for loading
+                img.addEventListener("load", function () {
+                    clearCanvas();
+                    context.drawImage(img, 0, 0, 300, 250);
+                }, false);
+
+                // To enable drag and drop
+                canvas.addEventListener("dragover", function (evt) {
+                    evt.preventDefault();
+                }, false);
+
+                canvas.addEventListener("drop", function (event) {
+                    var files = event.dataTransfer.files;
+
+                    if (files.length > 0) {
+                        var file = files[0];
+
+                        if (typeof FileReader !== "undefined") {
+                            var reader = new FileReader();
+
+                            reader.onload = function (event) {
+                                console.log(event.type);
+                            };
+                            reader.onprogress = function (event) {
+                                console.log(event.type);
+                                var percentLoaded = Math.round((event.loaded / event.total) * 100);
+                                progress.textContent = "Loader: " + percentLoaded + '%';
+                                console.log(percentLoaded)
+                            };
+                            reader.onloadend = function (event) {
+                                console.log(event.type);
+                                if (!file.type.match('image.*')) {
+                                    alert("Not an image!!");
+                                } else {
+                                    img.src = event.target.result;
+                                }
+
+                                beginCanvasDrawing();
+                            };
+                            reader.onerror = function (event) {
+                                console.log(event.type);
+                            };
+
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                    event.stopPropagation();
+                    event.preventDefault();
+                }, false);
+
+
+                function beginCanvasDrawing() {
+                    var brush = "rgba(200, 34, 2, .5)";
+
+                    canvas.addEventListener("mousedown", function (event) {
+                        mouseIsDown = true;
+                        clearCanvas();
+                        context.beginPath();//starts the drawing once users mouse is down
+                    }, false);
+
+                    canvas.addEventListener("mousemove", function (event) {
+                        if (mouseIsDown) {
+                            canvas.style.cursor = "pointer";
+                            context.strokeStyle = brush;
+                        
+                            context.shadowOffsetX = 0;
+                            context.shadowOffsetY = 0;
+                            context.shadowBlur    = 15;
+                            context.shadowColor   = brush;
+
+                            context.lineWidth = 5;
+                            context.lineJoin = "round";
+                            context.lineTo(event.layerX, event.layerY);
+                            context.stroke();
+                        } else {
+                            console.log("hold mouse button down")
+                        }
+                    }, false);
+
+                    canvas.addEventListener("mouseup", function (event) {
+                        mouseIsDown = false;
+                        var colors = context.getImageData(event.layerX, event.layerY, 10, 10).data;
+                        console.log(colors);
+                        brush = "rgba(" + colors[0] + ", " + colors[1] + ", " + colors[2] + ", " + colors[3] + ")";
+                        console.log(brush);
+                    }, false);
+
+                    saveBtn.style.visibility = "visible";
+                    saveBtn.innerHTML = "Save Your Creation";
+                    saveBtn.addEventListener("click", function (event) {
+                        var newImg = new Image();
+                        newImg.src = canvas.toDataURL();
+                        window.location.href = newImg.src.replace('image/png', 'image/octet-stream');  
+                    }, false);
+                }
+            }
+
+            window.addEventListener('DOMContentLoaded', adInit, false);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+CACHE MANIFEST
+# 2012-12-13:v1 – Keep the version to purge the cache when updates are needed
+
+# Explicitly cached entries
+CACHE:
+index.html
+css/style.css
+ad/adstyle.css
+js/script.js
+ad/adscript.js
+ad/bg.jpg
+images/button.png
+images/bg.jpg
+fonts/webfont.otf
+fonts/webfont.ttf
+fonts/webfont.woff
+fonts/webfont.svg
+media/audio.mp3
+media/video.mp4
+media/video.webm
+
+# offline.html will be served if the user is offline and request new “non-cached” assets
+FALLBACK:
+index.html offline.html
+
+# Resources that require the user to be online.
+NETWORK:
+submit.aspx
+http://api.twitter.com

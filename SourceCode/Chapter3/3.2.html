@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" media="all" href="base.css" />
+<link rel="stylesheet " media="all and (orientation:portrait) " href="tablet_portrait.css">
+<link rel="stylesheet " media="all and (orientation:landscape) " href="tablet_landscape.css">
+<link rel="stylesheet" media="tv" href="tv.css" />
+</head>
+<body>
+<div align=center id=clickBtn data-link=$MACRO$ onClick=window.open(macroValue)>Open Macro</div>
+</body>
+<script type="text/javascript">
+var macroValue = document.getElementById('clickBtn').getAttribute('data-link'); //returns $MACRO$
+</script>
+</html>

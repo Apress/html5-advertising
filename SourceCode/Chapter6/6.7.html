@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<head>
+<script>
+var invocation = new XMLHttpRequest();
+var url = 'http://free.worldweatheronline.com/feed/weather.ashx?q=19043&format=json&num_of_days=3&key=46a985d57f014425122410';
+
+function callOtherDomain() {
+  if(invocation) {
+    invocation.open('GET', url, true);
+    invocation.withCredentials = true;
+    invocation.onreadystatechange = gotThatData;
+    invocation.send();
+  }
+}
+
+function gotThatData (data) {
+	console.log(data)
+}
+
+callOtherDomain()
+</script>
+</head>
+<body>
+</body>
+</html>

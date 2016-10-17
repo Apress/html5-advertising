@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+<div data-name="product" data-url="http://www.productURL.com"></div>
+</body>
+<script>
+var element = document.getElementsByTagName('div')[0];
+var name = element.dataset.name = "product"
+var url = element.dataset.url = " http://www.productURL.com"
+console.log('name ' + name, 'url ' + url)
+</script>
+</head>
+</html>

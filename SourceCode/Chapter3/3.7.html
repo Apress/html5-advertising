@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<div id='box' style='position:absolute; background-color:black; width:50px; height:50px;'></div>
+</body>
+<script>
+var globalRequestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+window.requestAnimationFrame = globalRequestAnimationFrame;
+
+var theElement = document.getElementById('box');
+var movement = 0;
+
+function animate(timestamp) {
+	//move something the new way
+	movement += 5;
+	globalRequestAnimationFrame(animate);
+	theElement.style.left = movement + 'px';
+	console.log(movement);
+}
+
+//kick animation off
+globalRequestAnimationFrame(animate);
+</script>
+</html>

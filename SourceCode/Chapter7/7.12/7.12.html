@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/> 
+</head>
+<body>
+<button onClick="handleEvent(this);">Play Audio</button>
+<button onClick="handleEvent(this);">Pause Audio</button>
+<button onClick="handleEvent(this);">Audio On</button>
+<button onClick="handleEvent(this);">Audio Off</button>
+</body>
+
+<script>
+var player = new Audio ();
+if (document.createElement('audio').canPlayType('audio/ogg')) {
+	//play ogg file
+	player.src = 'someAudioFile.ogg';
+} else if (document.createElement('audio').canPlayType('audio/mpeg')) {
+	//play mp3 file
+	player.src = 'someAudioFile.mp3';
+} else if (document.createElement('audio').canPlayType('audio/mp4')) {
+	//play aac file
+	player.src = 'someAudioFile.aac';
+} else {
+ 	//Flash or Silverlight failover    
+}
+player.setAttribute('autoplay');
+
+function handleEvent (event) {
+	var t = event.textContent;
+	switch (t) {
+		case 'Play Audio' :
+			player.play();
+			break;
+		case 'Pause Audio' :
+			player.pause();
+			break;
+		case 'Audio On' :
+			player.volume=1;
+			break;
+		case 'Audio Off' :
+			player.volume=0;
+			break;
+	}
+	console.log(t);
+}
+</script>
+</html>

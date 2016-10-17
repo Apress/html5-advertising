@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang=en>
+<head>
+	<style type="text/css">
+#ad300 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 250px;
+	border: 1px solid #000;
+	font-family: Arial;
+	font-size: 50px;
+	background-color: red;
+	color: black;
+	opacity: 1;
+	-webkit-transition-property: color;
+  	-webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: cubic-bezier(0.5, 0.2, 0.9, 0.4);
+}
+</style>
+</head>
+<body align=center>
+	<div id="ad300">300x250</div>
+</body>
+<script type="text/javascript">
+
+function adInit () {
+   window.addEventListener('message', messageHandler, true);
+   console.log('adInit')
+}
+
+function messageHandler(event) {
+   switch(event.origin) {
+      case "http://johnpercival.org"://switch for your domain
+      	 //only listen for events from our domain
+         if(event.data === 'play300') {
+         	animate300();
+         } else {
+         	//not our 300's message to animate
+         }
+         break;
+   }
+}
+
+function animate300 () {
+	document.getElementById('ad300').style.color = 'white';
+}
+
+window.addEventListener('load', adInit, false);
+</script>
+</html>

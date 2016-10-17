@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+var intent = new Intent({
+action:"http://webintents.org/pick",
+type:"http://w3.org/type/contact",
+extras:{fields: ["displayName", "emails"] }
+}); 
+
+navigator.startActivity(intent, contactsOK, contactsFail);
+
+function contactsOK (contacts) {
+	console.log(contacts);
+}
+function contactsFail (error) {
+	console.error(error);
+}
+
+</script>
+</html>

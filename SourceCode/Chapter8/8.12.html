@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1, user-scalable=no">
+</head>
+<body>
+	<div id="element" style="position:absolute; background-color:black; width:50px; height:50px;"></div>
+</body>
+<html>
+<script>
+var element = document.getElementById("element");
+
+element.addEventListener('touchmove', function(event) {
+	event.preventDefault();
+	
+	if (event.targetTouches.length === 1) {
+		console.log(event)
+		var touch = event.targetTouches[0];
+		// Place element where the finger is
+		element.style.left = touch.pageX + 'px';
+		element.style.top = touch.pageY + 'px';
+	}
+}, false); 
+</script>
+</html>

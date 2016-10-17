@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>HTML 5 video track</title>
+    <style>
+        .green::cue {
+        	color: green;
+        	text-transform: uppercase;
+        }
+        .green:cue {
+          color: green;
+          text-transform: uppercase;
+        }
+        ::cue .green {
+          color: green;
+          text-transform: uppercase;
+        }
+        .green {
+          color: green;
+          text-transform: uppercase;
+        }
+    </style>
+  </head>
+    <body>
+      <video controls width="640" height="360">
+        <source src="someVideo.mp4" type="video/mp4" />
+        <source src=" someVideo.webm" type="video/webm" />
+        <source src=" someVideo.ogv" type="video/ogg" />
+        <track src="helloWorld.vtt" kind="subtitles" srclang="en" label="English" />
+      </video>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Server:</h1>
+<div id="output"></div>
+
+<script>
+if (typeof(EventSource)!=="undefined") {
+  var source = new EventSource("sample.php");
+  source.onmessage=function(event) {
+    document.getElementById("output").innerHTML += "New " + event.type + " " + event.data + "<br/>";
+  };
+} else {
+  document.getElementById("output").innerHTML="No Support";
+}
+</script>
+</body>
+</html>

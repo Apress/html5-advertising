@@ -1,0 +1,46 @@
+<VAST version="2.0">
+    <Ad id="12345">
+        <InLine>
+            <AdSystem>Acudeo Compatible</AdSystem>
+            <AdTitle>VAST 2.0 Instream Test</AdTitle>
+            <Description>VAST 2.0 Instream Test</Description>
+            <Error>http://url/error</Error>
+            <Impression>http://tracking/impression</Impression>
+            <Creatives>
+                <Creative AdID="12345">
+                    <Linear>
+                        <Duration>00:00:30</Duration>
+                        <TrackingEvents>
+                            <Tracking event="creativeView">http://tracking/creativeView</Tracking>
+                            <Tracking event="start">http://tracking/start</Tracking>
+                            <Tracking event="midpoint">http://tracking/midpoint</Tracking>
+                            <Tracking event="firstQuartile">http://tracking/firstQuartile</Tracking>
+                            <Tracking event="thirdQuartile">http://tracking/thirdQuartile</Tracking>
+                            <Tracking event="complete">http://tracking/complete</Tracking>
+                        </TrackingEvents>
+                        <VideoClicks>
+                            <ClickThrough>http://www.somedomain.com</ClickThrough>
+                            <ClickTracking>http://tracking/click</ClickTracking>
+                        </VideoClicks>
+                        <MediaFiles>
+                            <MediaFile delivery="progressive" type="video/x-flv" bitrate="800" width="640" height="360" scalable="true" maintainAspectRatio="true">
+	http://cdn.somedomain.com/video
+</MediaFile>
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+                <Creative AdID="12345Companion">
+                    <CompanionAds>
+                        <Companion width="300" height="250">
+                            <StaticResource creativeType="image/jpeg">http://cdn.somedomain.com/some.jpg</StaticResource>
+                            <TrackingEvents>
+                                <Tracking event="creativeView">http://tracking </Tracking>
+                            </TrackingEvents>
+                            <CompanionClickThrough>http://www.somedomain.com</CompanionClickThrough>
+                        </Companion>
+                    </CompanionAds>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>
